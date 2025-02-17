@@ -1,18 +1,22 @@
 package com.springproject.ecommerceApplication;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "category") // Ensure the table is named "category"
+@Table(name = "category")
 @Getter
 @Setter
 public class Category {
 
     @Id
-    private Long categoryId;
+    @Column(name = "categoryid") 
+    @JsonProperty("categoryid")
+    private Long categoryid;  
 
-    @Column(name = "category_name", nullable = false, unique = true)
-    private String categoryName;
+    @Column(name = "categoryname")
+    @JsonProperty("categoryname") 
+    private String categoryname;
 }
