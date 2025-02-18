@@ -12,24 +12,18 @@ import java.util.Optional;
 public class ProductController {
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     @Autowired
-    private ProductRepository productRepository;
+    private ProductJpaService productJpaService;
 
     // Get all products
     @GetMapping("/")
     public List<Product> getAllProducts() {
-        try {
-        return productRepository.findAll();
-        } catch (Exception e) {
-            logger.error("Error while saving products from JSON", e);
-        }
-        return null;
+        return productJpaService.getProducts();
     }
 
     // Get product by ID
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable Long id) {
-        return productRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
+        return productJpaService.getProductById(id);
     }
 
 }
