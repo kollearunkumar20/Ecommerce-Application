@@ -1,7 +1,12 @@
 package  com.springproject.ecommerceApplication;
-
 import com.springproject.ecommerceApplication.Product;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.ArrayList;
+import org.springframework.stereotype.Repository;
 
-public interface ProductRepository extends JpaRepository<Product, Long> {
+interface ProductRepository {
+    ArrayList<Product> getProducts();
+    Product getProductById(Long id);
+    Product addProduct(Product Product);
+    void deleteProduct(Long id);
+    Product updateProduct(Long id,Product Product);
 }
