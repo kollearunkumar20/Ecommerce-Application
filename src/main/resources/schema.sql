@@ -1,5 +1,13 @@
-drop table IF  EXISTS product; 
-drop table category;
+DROP TABLE IF EXISTS users;
+drop table product;
+drop table category; 
+
+CREATE TABLE IF NOT EXISTS users (
+    username VARCHAR(255) NOT NULL PRIMARY KEY,
+    password VARCHAR(255) NOT NULL,
+    issubscribed BOOLEAN NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS category (
     categoryid BIGINT  PRIMARY KEY,
     categoryname VARCHAR(255) NOT NULL
@@ -11,6 +19,7 @@ CREATE TABLE IF NOT EXISTS product (
     price DOUBLE NOT NULL,
     imageurl VARCHAR(255),
     rating DOUBLE NOT NULL,
+    description VARCHAR(255),
     category_id BIGINT NOT NULL,
     FOREIGN KEY (category_id) REFERENCES category(categoryid)
 );

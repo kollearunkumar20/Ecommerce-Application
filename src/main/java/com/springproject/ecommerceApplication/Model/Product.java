@@ -8,15 +8,11 @@ public class Product {
 
     @Id
     private Long id;
-
     private String name;  
-
     private String brand;
-
     private double price;
-
     private String imageurl;
-
+    private String description;
     private double rating;
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "categoryId", nullable = false)  // Define foreign key relationship
@@ -67,6 +63,14 @@ public class Product {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String imageurl) {
+        this.description = description;
     }
 
     public Category getCategory() {
