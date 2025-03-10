@@ -1,14 +1,14 @@
-MERGE INTO users (username, password, issubscribed) 
+INSERT INTO users (username, password, issubscribed)
 VALUES ('arun', '$2a$12$rFQagOttk0BGLKmjrjOHTOVLTwpt2RtrIjjNjg8TjvxHTnx8wODqG', true), 
        ('chandu', '$2a$12$bjvUocQ2ge/ATpx6eZMxz.32Pf5.jtcZP9cf0LonjnHRTU/wWysP6', false);
 
-insert INTO category (categoryId, categoryName) VALUES
+INSERT INTO category (categoryId, categoryName) VALUES
 (1, 'Clothing'),
 (2, 'Electronics'),
 (3, 'Appliances'),
 (4, 'Grocery'),
 (5, 'Toys');
-MERGE INTO product (id, name, brand, price, imageurl, rating, description, category_id) VALUES
+INSERT INTO product (id, name, brand, price, imageurl, rating, description, category_id) VALUES
 (1, 'Wide Bowknot Hat', 'MAJIK', 288, 'https://assets.ccbp.in/frontend/react-js/ecommerce/clothes-cap.png', 3.6, 
  'This Summes perfect White Wide Brim Straw Beach hat is great for sunny days. Made of lightweight, skin-friendly paper straw for comfort and style.', 1),
 
