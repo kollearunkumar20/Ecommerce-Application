@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: ecommerce
+      POSTGRES_USER: arun
+      POSTGRES_PASSWORD: arun@123
+    ports:
+      - "5432:5432"
+    networks:
+      - my_network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - "9090:9090"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/ecommerce
+      SPRING_DATASOURCE_USERNAME: arun
+      SPRING_DATASOURCE_PASSWORD: arun@123
+      SPRING_JWT_SECRET: "VGhpcy1pcy1hLXZlcnktc2VjdXJlLXNlY3JldC1rZXktZm9yLUpXVC1zaWduaW5n"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+
+volumes:
+  postgres_data:
